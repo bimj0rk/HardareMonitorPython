@@ -1,5 +1,6 @@
 import tkinter as tk
 from math import sin, cos, radians
+import preluator_de_date as pdd
 
 # Helper function to draw a semicircle speedometer
 def create_speedometer(canvas, x, y, radius, label, value, max_value=100):
@@ -50,9 +51,9 @@ root.configure(bg="black")
 
 # Static data for demonstration
 categories = {
-    "CPU": {"CPU Temp": 55, "CPU Load": 45},
-    "GPU": {"GPU Temp": 65, "GPU Load": 35},
-    "RAM": {"RAM Usage": 60},
+    "CPU": {"CPU Temp": pdd.getCpuTemp(), "CPU Load": pdd.getCpuLoad()},
+    "GPU": {"GPU Temp": pdd.getGpuTemp(), "GPU Load": pdd.getGpuLoad()},
+    "RAM": {"RAM Usage": pdd.getMemLoad()},
 }
 
 # Create category boxes
