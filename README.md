@@ -1,1 +1,1 @@
-# HardareMonitorPython
+# HardwareMonitorPython
