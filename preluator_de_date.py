@@ -1,6 +1,7 @@
 import wmi
 import platform
 import psutil
+import py3nvml
 
 if platform.system() == 'Windows':
     w = wmi.WMI(namespace="root\OpenHardwareMonitor")
@@ -27,7 +28,8 @@ if platform.system() == 'Windows':
 
     def getGpuLoad():
         return getSensorValue('Load', 'GPU Core')
-    
+
+#to modify, la un moment dat mergea, acum nu suntem siguri ca nu avem linux pe pc/laptop
 elif platform.system() == 'Linux':
     def getCpuTemp():
         return psutil.sensors_temperatures()['coretemp'][0].current
@@ -39,7 +41,7 @@ elif platform.system() == 'Linux':
         return psutil.virtual_memory().percent
 
     def getGpuTemp():
-        return None
+        return py3nvml.grab_gpus()[0].temperature
 
     def getGpuLoad():
-        return None
+        return py3nvml.grab_gpus()[0].load
