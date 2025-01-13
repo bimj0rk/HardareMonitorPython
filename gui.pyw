@@ -82,6 +82,7 @@ def update_speedometers(canvas_dict, label_dict):
     # Step 2: Wait 1 second before updating
     root.after(10, lambda: update_new_data(canvas_dict, label_dict, data))
 
+
 def update_new_data(canvas_dict, label_dict, data):
     # Step 3: Update speedometers and redraw text
     for label, (canvas, cx, cy, radius, is_temp) in canvas_dict.items():
@@ -93,7 +94,7 @@ def update_new_data(canvas_dict, label_dict, data):
         label_dict[label] = label_text
 
     # Schedule the next update in 3 seconds
-    root.after(1000, update_speedometers, canvas_dict, label_dict)
+    root.after(100, update_speedometers, canvas_dict, label_dict)
 
 # Initialize the GUI
 root = tk.Tk()

@@ -17,6 +17,7 @@ def getInfo():
     memLoad = pdd.getMemLoad()
     gpuTemp = pdd.getGpuTemp()
     gpuLoad = pdd.getGpuLoad()
+    moboLoad = pdd.getMoboTemp()
 
     #template ul pe care l-am luat pentru display are un format specific, aranjam datele in functie de asta
     A = " " + str(int(cpuTemp))
@@ -33,8 +34,10 @@ def getInfo():
        C = " " + str(int(memLoad)) 
     else:
        C = str(int(memLoad))
+   
+    D = " " + str(int(moboLoad))
             
-    finalString1 = "1:" + A + "," + B + "," + C + ",N/A,;" #acel N/A vine in locul senzorului de temp pt motherboard, ceea ce nu se poate afla cu libraria psutil (si nici cu alta librarie din research ul pe care l-am facut)
+    finalString1 = "1:" + A + "," + B + "," + C + "," + D +",;" #acel N/A vine in locul senzorului de temp pt motherboard, ceea ce nu se poate afla cu libraria psutil (si nici cu alta librarie din research ul pe care l-am facut)
         
     E = " " + str(int(gpuTemp))
         
@@ -51,8 +54,8 @@ def getInfo():
     return finalString1, finalString2, finalString3
 
 while True:
-    writeToArduino(getInfo()[0])
-    writeToArduino(getInfo()[1])
-    writeToArduino(getInfo()[2])
+   writeToArduino(getInfo()[0])
+   writeToArduino(getInfo()[1])
+   writeToArduino(getInfo()[2])
 
-    time.sleep(0.5)
+   time.sleep(0.5)
